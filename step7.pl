@@ -29,5 +29,14 @@ atom_chars(X,L),
 append(L,['0'],L2),
 concat_atom(L2,X3),
 pad(X3,Pad,Result)
-)
+).
+
+padl(X,Pad,Result) :-
+atom_length(X,Len),
+(Len==Pad,Result=X;
+atom_chars(X,L),
+append(['0'],L,L2),
+concat_atom(L2,X3),
+padl(X3,Pad,Result)
+).
 
